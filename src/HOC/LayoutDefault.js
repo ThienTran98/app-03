@@ -6,7 +6,7 @@ export default function LayoutDefault({children}) {
   return (
     <div>
         <Header/>
-        <div className='h-[700px] w-full'>
+        <div className='min-h-[500px] w-full '>
             {children}
             </div>
             <Footer/>
