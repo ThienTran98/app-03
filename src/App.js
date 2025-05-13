@@ -1,24 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import LayoutDefault from './HOC/LayoutDefault';
+import HomePages from "./Pages/HomePages/HomePages";
+import Room from './Pages/Room/Room';
+import BookingHistory from "./Pages/BookingHistory/BookingHistory";
+import Payment from './Pages/Payment/Payment';
+import Login from "./Pages/Login/Login";
+import Register from './Pages/Register/Register';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={
+        <LayoutDefault>
+          <HomePages/>
+        </LayoutDefault>
+      } />
+      <Route path="/all-list-room" element={
+        <LayoutDefault>
+          <Room/>
+        </LayoutDefault>
+      } />
+        <Route path="/history-booking" element={
+        <LayoutDefault>
+          <BookingHistory/>
+        </LayoutDefault>
+      } />
+       <Route path="/receipt" element={
+        <LayoutDefault>
+         <Payment/>
+        </LayoutDefault>
+      } />
+         <Route path="/login" element={
+        <LayoutDefault>
+         <Login/>
+        </LayoutDefault>
+      } />
+       <Route path="/register" element={
+        <LayoutDefault>
+         <Register/>
+        </LayoutDefault>
+      } />
+    </Routes>
+    
+    
+    
+    </BrowserRouter>
   );
 }
 
