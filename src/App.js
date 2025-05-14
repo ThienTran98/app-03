@@ -6,6 +6,8 @@ import BookingHistory from "./Pages/BookingHistory/BookingHistory";
 import Payment from './Pages/Payment/Payment';
 import Login from "./Pages/Login/Login";
 import Register from './Pages/Register/Register';
+import BookingDetail from './Pages/BookingDetail/BookingDetail';
+import Booking from "./Pages/Booking/Booking";
 
 
 function App() {
@@ -40,6 +42,16 @@ function App() {
        <Route path="/register" element={
         <LayoutDefault>
          <Register/>
+        </LayoutDefault>
+      } />
+       <Route path="/detail-room/:id" element={
+        <LayoutDefault>
+         <BookingDetail/>
+        </LayoutDefault>
+      } />
+      <Route path="/booking-room/:id" element={
+        <LayoutDefault>
+         <Booking/>
         </LayoutDefault>
       } />
     </Routes>
