@@ -6,7 +6,7 @@ export default function Booking() {
     console.log('params: ', params);
     const location = useLocation();
     console.log('location: ', location);
-    const {floor , name , price , id, status} = location?.state.nameRoom
+    const {floor , name , price , id, status} = location?.state?.nameRoom
  || {};
 
  const user = null;
