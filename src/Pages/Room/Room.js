@@ -8,6 +8,18 @@ const data = [
     name: 'Phòng 101',
     price: 500000,
     status: 'Đã đặt',
+    image : [
+      { id : 1,
+        img:"https://r-xx.bstatic.com/xdata/images/hotel/263x210/595550862.jpeg?k=3514aa4abb76a6d19df104cb307b78b841ac0676967f24f4b860d289d55d3964&o=",
+      }, {
+        id: 2,
+        img : "https://r-xx.bstatic.com/xdata/images/hotel/263x210/595548591.jpeg?k=01741bc3aef1a5233dd33794dda397083092c0215b153915f27ea489468e57a2&o=",
+      },
+      {
+        id: 3,
+        img : "https://r-xx.bstatic.com/xdata/images/hotel/263x210/595551044.jpeg?k=262826efe8e21a0868105c01bf7113ed94de28492ee370f4225f00d1de0c6c44&o=",
+      }
+    ],
     floor : 1,
   },
   {
@@ -16,6 +28,18 @@ const data = [
     price: 800000,
     status: 'Đã đặt',
       floor : 1,
+       image : [
+      { id : 1,
+        img:"https://r-xx.bstatic.com/xdata/images/hotel/263x210/595550862.jpeg?k=3514aa4abb76a6d19df104cb307b78b841ac0676967f24f4b860d289d55d3964&o=",
+      }, {
+        id: 2,
+        img : "https://r-xx.bstatic.com/xdata/images/hotel/263x210/595548591.jpeg?k=01741bc3aef1a5233dd33794dda397083092c0215b153915f27ea489468e57a2&o=",
+      },
+      {
+        id: 3,
+        img : "https://r-xx.bstatic.com/xdata/images/hotel/263x210/595551044.jpeg?k=262826efe8e21a0868105c01bf7113ed94de28492ee370f4225f00d1de0c6c44&o=",
+      }
+    ],
   },
   {
     id: 3,
@@ -23,6 +47,18 @@ const data = [
     price: 1500000,
     status: 'Đang sử dụng',
       floor : 2,
+       image : [
+      { id : 1,
+        img:"https://r-xx.bstatic.com/xdata/images/hotel/263x210/595550862.jpeg?k=3514aa4abb76a6d19df104cb307b78b841ac0676967f24f4b860d289d55d3964&o=",
+      }, {
+        id: 2,
+        img : "https://r-xx.bstatic.com/xdata/images/hotel/263x210/595548591.jpeg?k=01741bc3aef1a5233dd33794dda397083092c0215b153915f27ea489468e57a2&o=",
+      },
+      {
+        id: 3,
+        img : "https://r-xx.bstatic.com/xdata/images/hotel/263x210/595551044.jpeg?k=262826efe8e21a0868105c01bf7113ed94de28492ee370f4225f00d1de0c6c44&o=",
+      }
+    ],
   },
   {
     id: 4,
@@ -30,6 +66,18 @@ const data = [
     price: 1500000,
     status: 'Đang sử dụng',
       floor : 2,
+       image : [
+      { id : 1,
+        img:"https://r-xx.bstatic.com/xdata/images/hotel/263x210/595550862.jpeg?k=3514aa4abb76a6d19df104cb307b78b841ac0676967f24f4b860d289d55d3964&o=",
+      }, {
+        id: 2,
+        img : "https://r-xx.bstatic.com/xdata/images/hotel/263x210/595548591.jpeg?k=01741bc3aef1a5233dd33794dda397083092c0215b153915f27ea489468e57a2&o=",
+      },
+      {
+        id: 3,
+        img : "https://r-xx.bstatic.com/xdata/images/hotel/263x210/595551044.jpeg?k=262826efe8e21a0868105c01bf7113ed94de28492ee370f4225f00d1de0c6c44&o=",
+      }
+    ],
   },
    {
     id: 5,
@@ -37,6 +85,18 @@ const data = [
     price: 1500000,
     status: 'Còn trống',
       floor : 3,
+       image : [
+      { id : 1,
+        img:"https://r-xx.bstatic.com/xdata/images/hotel/263x210/595550862.jpeg?k=3514aa4abb76a6d19df104cb307b78b841ac0676967f24f4b860d289d55d3964&o=",
+      }, {
+        id: 2,
+        img : "https://r-xx.bstatic.com/xdata/images/hotel/263x210/595548591.jpeg?k=01741bc3aef1a5233dd33794dda397083092c0215b153915f27ea489468e57a2&o=",
+      },
+      {
+        id: 3,
+        img : "https://r-xx.bstatic.com/xdata/images/hotel/263x210/595551044.jpeg?k=262826efe8e21a0868105c01bf7113ed94de28492ee370f4225f00d1de0c6c44&o=",
+      }
+    ],
   },
 ]
 
@@ -56,19 +116,30 @@ export default function Room() {
         <td className="px-6 py-4">
           {item.status}
         </td>
+          <td className="px-6 py-4 flex items-center">
+          {renderListImage(item.image)}
+        </td>
         <td className="px-6 py-4">
           <button onClick={()=> {
             handleNavigateDetailRoom(item.id , item)
           }} className='px-4 py-1 text-teal-500 opacity-75 font-semibold hover:opacity-100'>Chi tiết</button>
           <button onClick={() => {
-            handleNavigateBooking(item.id, item.name)
+            handleNavigateBooking(item.id, item)
           }} className='px-4 py-1 text-teal-500 opacity-75 font-semibold hover:opacity-100'>Đặt phòng</button>
         </td>
       </tr>
     )
   })
 }
-
+  const renderListImage = (list) => {
+    return list.map((item, index) => {
+      return (
+        <div key={item.id} className='w-1/3 mr-5'>
+          <img className='rounded-md object-cover' src={item.img} alt="" />
+        </div>
+      )
+    })
+  }
   const handleNavigateDetailRoom = (id , item) => {
     navigate(`/detail-room/${id}`, { state: { room : item } })
   }
@@ -92,6 +163,9 @@ export default function Room() {
         </th>
         <th scope="col" className="px-6 py-3">
           Trạng thái
+        </th>
+         <th scope="col" className="px-6 py-3">
+          Hình ảnh
         </th>
         <th scope="col" className="px-6 py-3">
           

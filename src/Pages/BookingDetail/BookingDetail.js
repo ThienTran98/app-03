@@ -3,8 +3,6 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 export default function BookingDetail() {
   const location = useLocation();
-  console.log('location: ', location);
-
   const {floor , name , price , id, status} = location?.state.room || {};
   
   
